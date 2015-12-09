@@ -190,6 +190,9 @@ var update = function (key, params, callback) {
     if (params.email) {
         form.append("email", params.email)
     }
+    if (params.status_message) {
+        form.append("status_message", params.status_message)
+    }
     if (params.location_street) {
         form.append("location_street", params.location_street)
     }
@@ -1166,11 +1169,12 @@ wss.on("connection", function (ws) {
                                                 user.name = json.params.name || user.name;
                                                 user.username = json.params.username || user.username;
                                                 user.email = json.params.email || user.email;
-                                                user.location.location_street = json.params.location_street || user.location.location_street;
-                                                user.location.location_city = json.params.location_city || user.location.location_city;
-                                                user.location.location_state = json.params.location_state || user.location.location_state;
-                                                user.location.location_country = json.params.location_country || user.location.location_country;
-                                                user.location.location_zip = json.params.location_zip || user.location.location_zip;
+                                                user.status_message = json.params.status_message || user.status_message;
+                                                user.location.street = json.params.location_street || user.location.street;
+                                                user.location.city = json.params.location_city || user.location.city;
+                                                user.location.state = json.params.location_state || user.location.state;
+                                                user.location.country = json.params.location_country || user.location.country;
+                                                user.location.zip = json.params.location_zip || user.location.zip;
                                                 updateUser(user, function (err, user) {
                                                     if (err) {
                                                         console.log(err);
